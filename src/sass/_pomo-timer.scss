@@ -1,0 +1,16 @@
+.pomo-timer {
+  .display {
+    font-weight: bold;
+    font-size: 4rem;
+
+    .timer-section {
+      position: relative;
+      display: block;
+      text-align: center;
+
+      div {
+        display: inline-block;
+      }
+    }
+  }
+}
