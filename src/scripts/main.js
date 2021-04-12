@@ -30,7 +30,7 @@ const formatTime = seconds => {
     fminutes = addLeadingZero(fminutes);
     fhours = addLeadingZero(fhours);
 
-    formattedTime = `${fminutes}:${fseconds}`;
+    formattedTime = `${fhours}:${fminutes}:${fseconds}`;
 
     return formattedTime;
 };
@@ -94,3 +94,4 @@ const onStart = () => {
 
 $start.addEventListener("click", onStart);
 $reset.addEventListener("click", onReset);
+printTimer(formatTime(remainingTime));

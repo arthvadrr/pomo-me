@@ -17,9 +17,9 @@ Babel, PostCSS, FlexBugs, PostCSS Preset Env, Terser
 
 ## Copyright
 
-Pomo Me is under GPL-2.0-or-later. It means its free, do what you want with it.
-Check out the official lawyer stuff here https://www.gnu.org/licenses/licenses.html
+Pomo Me is under GPL-2.0-or-later. It means it is relatively free software, do what you want with it.
+Check out the official license docs here https://www.gnu.org/licenses/licenses.html
 
 ## A note about PR
 
-Feel free to submit PRs, I <i>will</i> look at them.
+Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crappy code. Please include comments and reasoning.
