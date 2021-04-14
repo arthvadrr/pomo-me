@@ -131,3 +131,14 @@ $reset.addEventListener("click", onReset);
 $increaseTime.addEventListener("click", onIncreaseTime);
 $decreaseTime.addEventListener("click", onDecreaseTime);
 printTimer(formatTime(remainingTime));
+
+async function getRes() {
+    let url =
+        "https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits";
+    let response = await fetch(url);
+
+    let commits = await response.json(); // read response body and parse as JSON
+    console.log(commits);
+    console.log(commits[0].author.login);
+}
+getRes();
