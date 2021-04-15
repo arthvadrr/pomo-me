@@ -69,6 +69,7 @@ const onReset = () => {
 const onStop = () => {
     isRunning = false;
     $start.innerHTML = "Start";
+    $start.setAttribute("aria-pressed", false);
     clearInterval(countdown);
     startTime = remainingTime;
     console.log(remainingTime);
@@ -86,6 +87,7 @@ const onStart = () => {
 
         isRunning = true;
         $start.innerHTML = "Pause";
+        $start.setAttribute("aria-pressed", true);
         dateStarted = Date.now();
 
         countdown = setInterval(() => {
@@ -106,6 +108,7 @@ const onIncreaseTime = () => {
     isRunning = false;
     clearInterval(countdown);
     $start.innerHTML = "Start";
+    $start.setAttribute("aria-pressed", false);
 
     if (startTime <= 3300) {
         startTime += 300;
@@ -119,6 +122,7 @@ const onDecreaseTime = () => {
     isRunning = false;
     clearInterval(countdown);
     $start.innerHTML = "Start";
+    $start.setAttribute("aria-pressed", false);
 
     if (startTime >= 600) {
         startTime -= 300;

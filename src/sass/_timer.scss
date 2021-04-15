@@ -1,0 +1,79 @@
+.pomo-timer {
+    .display {
+        font-weight: bold;
+        font-size: 4rem;
+
+        .timer-section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+
+            button {
+                font-family: "RobotoMono";
+                flex-grow: 1;
+                font-size: 2.4rem;
+                color: #888;
+                background-color: transparent;
+                border: none;
+                transition: $transition;
+                cursor: pointer;
+
+                &:hover,
+                &:focus {
+                    color: $classic-primary-light;
+                    text-shadow: 0 1px 4px $classic-primary-light;
+                }
+            }
+
+            #timer {
+                font-family: "RobotoMono";
+                font-size: 6rem;
+                letter-spacing: -6px;
+                text-shadow: 0 2px 3px rgba(255, 255, 255, 0.4);
+                user-select: none;
+            }
+        }
+    }
+    .controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        width: 300px;
+
+        #start {
+            cursor: pointer;
+            padding: 0.4rem 0;
+            margin: 1rem;
+            border: 2px solid transparent;
+            background-color: $classic-primary-light;
+            box-shadow: 0px 3px 0 0 darken($classic-primary-light, 50%);
+            color: darken($classic-primary-light, 60%);
+            font-family: Righteous;
+            font-weight: bold;
+            letter-spacing: 5px;
+
+            &[aria-pressed="true"] {
+                transform: translateY(3px);
+                box-shadow: none;
+                border-bottom: 2px solid darken($classic-primary-light, 50%);
+                background-color: lighten($classic-primary-light, 10%);
+                letter-spacing: 3px;
+            }
+        }
+
+        #reset {
+            background-color: transparent;
+            color: #fff;
+            font-size: 0.8rem;
+            border: none;
+            text-decoration: underline;
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+    }
+}
