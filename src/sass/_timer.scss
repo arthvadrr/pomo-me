@@ -44,8 +44,8 @@
 
             svg {
                 circle {
-                    stroke-width: 6px;
-                    stroke: #777;
+                    stroke-width: 3px;
+                    stroke: darken($classic-primary, 2%);
                 }
 
                 #bar {
@@ -53,7 +53,6 @@
                     transition: stroke-dashoffset 3s linear;
                     stroke: $classic-primary-light;
                     stroke-width: 3px;
-                    fill: rgba(#333, 0.9);
                 }
             }
         }
