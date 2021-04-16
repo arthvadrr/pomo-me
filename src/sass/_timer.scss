@@ -7,6 +7,7 @@
             position: relative;
             display: flex;
             justify-content: center;
+            padding-top: 4rem;
 
             button {
                 font-family: "RobotoMono";
@@ -27,10 +28,33 @@
 
             #timer {
                 font-family: "RobotoMono";
-                font-size: 6rem;
-                letter-spacing: -6px;
-                text-shadow: 0 2px 3px rgba(255, 255, 255, 0.4);
+                font-size: 4rem;
                 user-select: none;
+                z-index: 10;
+            }
+
+            .analog {
+                display: block;
+                height: 200px;
+                width: 200px;
+                border-radius: 100%;
+                position: absolute;
+                transform: scale(1.4) translateY(-21%);
+            }
+
+            svg {
+                circle {
+                    stroke-width: 6px;
+                    stroke: #777;
+                }
+
+                #bar {
+                    stroke-dashoffset: 565.48;
+                    transition: stroke-dashoffset 3s linear;
+                    stroke: $classic-primary-light;
+                    stroke-width: 3px;
+                    fill: rgba(#333, 0.9);
+                }
             }
         }
     }
@@ -40,6 +64,7 @@
         justify-content: center;
         margin: 0 auto;
         width: 300px;
+        padding-top: 5rem;
 
         #start {
             cursor: pointer;

@@ -18,7 +18,7 @@ let delta;
 //JS or linter bug resulting in type error. TODO Investigate why I'm having to explicitly force type inference.
 let countdown = () => {};
 
-let originalTime = 1500;
+let originalTime = 3;
 let startTime = originalTime;
 let remainingTime = originalTime;
 let currentDelta;
@@ -76,6 +76,10 @@ const onStop = () => {
 
     if (remainingTime === 0) {
         $start.setAttribute("disabled", true);
+        isRunning = false;
+        remainingTime = originalTime;
+        console.log("finished!");
+        onReset();
     }
 };
 
@@ -99,7 +103,7 @@ const onStart = () => {
                 onStop();
             }
         }, 100);
-    } else if (remainingTime != 0) {
+    } else if (remainingTime !== 0) {
         onStop();
     }
 };
