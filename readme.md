@@ -32,8 +32,19 @@ Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crapp
 <li>Preset Classic Pomo set times</li>
 <li>Short break and long break modes</li>
 <li>Desktop notifications &amp; options</li>
+<li>Discreet Local Time</li>
+<li>Additional Theme Ideas:
+<ul>
+<li>Steampunk</li>
+<li>Neon</li>
+<li>Fishtank</li>
+<li>Crystal Cave</li>
+<li>Hyperdrive</li>
+</ul>
+</li>
 <li>Tasks</li>
 <li>Sequencer</li>
+<li>Local Storage / User Settings</li>
 <li>Integrate with Toggl API</li>
 <li>Progressive web app</li>
 </ul>
