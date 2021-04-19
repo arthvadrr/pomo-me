@@ -22,4 +22,4 @@ Check out the official license docs here https://www.gnu.org/licenses/licenses.h
 
 ## A note about PR
 
-Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crappy code. Please include comments and reasoning.
+Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crappy code or if something doesn't look right. I'm not opinionated, I just want good code. Please include comments and reasoning with your PR. (Please no code formatting in PRs). Thanks!
