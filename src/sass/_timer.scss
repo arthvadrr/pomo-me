@@ -39,20 +39,20 @@
                 width: 200px;
                 border-radius: 100%;
                 position: absolute;
-                transform: scale(1.4) translateY(-21%);
+                transform: scale(1.4) translateY(-21%) rotate(270deg);
             }
 
             svg {
                 circle {
-                    stroke-width: 3px;
+                    stroke-width: 4px;
                     stroke: darken($classic-primary, 2%);
                 }
 
-                #bar {
-                    stroke-dashoffset: 565.48;
-                    transition: stroke-dashoffset 3s linear;
+                #progressBar {
+                    stroke-dashoffset: 0;
+                    transition: stroke-dashoffset 1s linear;
                     stroke: $classic-primary-light;
-                    stroke-width: 3px;
+                    stroke-width: 4px;
                 }
             }
         }

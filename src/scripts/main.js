@@ -11,9 +11,12 @@ const $start = document.getElementById("start");
 const $reset = document.getElementById("reset");
 const $increaseTime = document.getElementById("increaseTime");
 const $decreaseTime = document.getElementById("decreaseTime");
+const $progressBar = document.getElementById("progressBar");
 let isRunning = false;
 let dateStarted;
 let delta;
+let strokeDashArrayOffset;
+let startHidden = false;
 
 //JS or linter bug resulting in type error. TODO Investigate why I'm having to explicitly force type inference.
 let countdown = () => {};
@@ -45,7 +48,20 @@ const formatTime = seconds => {
     return formattedTime;
 };
 
-const printTimer = print => ($timer.innerHTML = print);
+const printTimer = print => {
+    $timer.innerHTML = print;
+    $progressBar.style.strokeDashoffset = updateStrokeDashArrayOffset();
+};
+
+const updateStrokeDashArrayOffset = () => {
+    if (remainingTime !== 0) {
+        let adjStart = originalTime - 1;
+        let adjRemaining = remainingTime - 1;
+
+        return 565.48 - (565.48 * adjRemaining) / adjStart;
+    }
+    return 565.48;
+};
 
 const adjustTime = delta => {
     const res = startTime - delta;
@@ -60,10 +76,20 @@ const adjustTime = delta => {
 
 const onReset = () => {
     onStop();
-    $start.removeAttribute("disabled", true);
+    if (startHidden) {
+        $start.removeAttribute("disabled", true);
+    }
+    isRunning = false;
+    $start.innerHTML = "Start";
+    $start.setAttribute("aria-pressed", false);
     startTime = originalTime;
     remainingTime = originalTime;
     printTimer(formatTime(remainingTime));
+};
+
+const onTimerZero = () => {
+    startHidden = true;
+    $start.setAttribute("disabled", true);
 };
 
 const onStop = () => {
@@ -71,24 +97,17 @@ const onStop = () => {
     $start.innerHTML = "Start";
     $start.setAttribute("aria-pressed", false);
     clearInterval(countdown);
-    startTime = remainingTime;
-    console.log(remainingTime);
 
     if (remainingTime === 0) {
-        $start.setAttribute("disabled", true);
-        isRunning = false;
-        remainingTime = originalTime;
-        console.log("finished!");
-        onReset();
+        onTimerZero();
+    } else {
+        startTime = remainingTime;
     }
 };
 
 const onStart = () => {
+    console.log("pressed");
     if (!isRunning) {
-        if (remainingTime === 0) {
-            remainingTime = startTime;
-        }
-
         isRunning = true;
         $start.innerHTML = "Pause";
         $start.setAttribute("aria-pressed", true);
@@ -98,11 +117,10 @@ const onStart = () => {
             delta = Math.round((Date.now() - dateStarted) / 1000);
             remainingTime = adjustTime(delta);
             printTimer(formatTime(remainingTime));
-            console.log(remainingTime);
             if (remainingTime === 0) {
                 onStop();
             }
-        }, 100);
+        }, 10);
     } else if (remainingTime !== 0) {
         onStop();
     }
@@ -119,6 +137,9 @@ const onIncreaseTime = () => {
     } else {
         startTime = 3600;
     }
+
+    remainingTime = startTime;
+    originalTime = startTime;
     printTimer(formatTime(startTime));
 };
 
@@ -130,8 +151,13 @@ const onDecreaseTime = () => {
 
     if (startTime >= 600) {
         startTime -= 300;
-        printTimer(formatTime(startTime));
+    } else {
+        startTime = 300;
     }
+
+    remainingTime = startTime;
+    originalTime = startTime;
+    printTimer(formatTime(startTime));
 };
 
 $start.addEventListener("click", onStart);
@@ -139,14 +165,3 @@ $reset.addEventListener("click", onReset);
 $increaseTime.addEventListener("click", onIncreaseTime);
 $decreaseTime.addEventListener("click", onDecreaseTime);
 printTimer(formatTime(remainingTime));
-
-async function getRes() {
-    let url =
-        "https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits";
-    let response = await fetch(url);
-
-    let commits = await response.json(); // read response body and parse as JSON
-    console.log(commits);
-    console.log(commits[0].author.login);
-}
-getRes();
