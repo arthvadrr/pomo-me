@@ -20,6 +20,20 @@ Babel, PostCSS, FlexBugs, PostCSS Preset Env, Terser
 Pomo Me is under GPL-2.0-or-later. It means it is relatively free software, do what you want with it.
 Check out the official license docs here https://www.gnu.org/licenses/licenses.html
 
-## A note about PR
+## A note about PRs
 
 Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crappy code or if something doesn't look right. I'm not opinionated, I just want good code. Please include comments and reasoning with your PR. (Please no code formatting in PRs). Thanks!
+
+## Roadmap
+
+<ul>
+<li>Timer finished screen</li>
+<li>Sound effects for ticking, finished</li>
+<li>Preset Classic Pomo set times</li>
+<li>Short break and long break modes<li>
+<li>Desktop notifications &amp; options</li>
+<li>Tasks</li>
+<li>Sequencer</li>
+<li>Integrate with Toggl API</li>
+<li>Progressive web app</li>
+</ul>
