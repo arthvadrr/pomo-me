@@ -30,7 +30,7 @@ Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crapp
 <li>Timer finished screen</li>
 <li>Sound effects for ticking, finished</li>
 <li>Preset Classic Pomo set times</li>
-<li>Short break and long break modes<li>
+<li>Short break and long break modes</li>
 <li>Desktop notifications &amp; options</li>
 <li>Tasks</li>
 <li>Sequencer</li>
