@@ -13,7 +13,7 @@
                 font-family: "RobotoMono";
                 flex-grow: 1;
                 font-size: 2.4rem;
-                color: #888;
+                color: rgb(131, 48, 48);
                 background-color: transparent;
                 border: none;
                 transition: $transition;
@@ -21,8 +21,8 @@
 
                 &:hover,
                 &:focus {
-                    color: $classic-primary-light;
-                    text-shadow: 0 1px 4px $classic-primary-light;
+                    color: $classic-primary;
+                    text-shadow: 0 1px 4px $classic-primary;
                 }
             }
 
@@ -30,6 +30,7 @@
                 font-family: "RobotoMono";
                 font-size: 4rem;
                 user-select: none;
+                color: lighten($classic-primary, 60%);
                 z-index: 10;
             }
 
@@ -45,13 +46,13 @@
             svg {
                 circle {
                     stroke-width: 4px;
-                    stroke: darken($classic-primary, 2%);
+                    stroke: darken($classic-primary, 5%);
                 }
 
                 #progressBar {
                     stroke-dashoffset: 0;
                     transition: stroke-dashoffset 1s linear;
-                    stroke: $classic-primary-light;
+                    stroke: lighten($classic-primary, 15%);
                     stroke-width: 4px;
                 }
             }
@@ -69,34 +70,33 @@
             cursor: pointer;
             padding: 0.4rem 0;
             margin: 1rem;
-            border: 2px solid transparent;
-            background-color: $classic-primary-light;
-            box-shadow: 0px 3px 0 0 darken($classic-primary-light, 50%);
-            color: darken($classic-primary-light, 60%);
+            border: none;
+            border-bottom: 2px solid #000;
+            background-color: $classic-primary;
+            color: $light-text;
             font-family: Righteous;
             font-weight: bold;
             letter-spacing: 5px;
 
             &[aria-pressed="true"] {
-                transform: translateY(3px);
                 box-shadow: none;
-                border-bottom: 2px solid darken($classic-primary-light, 50%);
-                background-color: lighten($classic-primary-light, 10%);
+                border-bottom: 2px solid darken($classic-primary, 50%);
                 letter-spacing: 3px;
             }
         }
 
         #reset {
             background-color: transparent;
-            color: #fff;
-            font-size: 0.8rem;
+            color: $light-text;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            font-family: Righteous;
             border: none;
-            text-decoration: underline;
             cursor: pointer;
 
             &:hover,
             &:focus {
-                color: #fff;
+                color: rgb(255, 255, 255);
             }
         }
     }

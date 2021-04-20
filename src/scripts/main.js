@@ -21,7 +21,7 @@ let startHidden = false;
 //JS or linter bug resulting in type error. TODO Investigate why I'm having to explicitly force type inference.
 let countdown = () => {};
 
-let originalTime = 3;
+let originalTime = 1500;
 let startTime = originalTime;
 let remainingTime = originalTime;
 let currentDelta;
@@ -120,7 +120,7 @@ const onStart = () => {
             if (remainingTime === 0) {
                 onStop();
             }
-        }, 10);
+        }, 100);
     } else if (remainingTime !== 0) {
         onStop();
     }
