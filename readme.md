@@ -27,12 +27,15 @@ Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crapp
 ## Roadmap
 
 <ul>
-<li>Timer finished screen</li>
+<li>Timer finished view</li>
+<li>Break views</li>
+<li>Steps / Progress / Current and upcoming modes</li>
 <li>Sound effects for ticking, finished</li>
 <li>Preset Classic Pomo set times</li>
 <li>Short break and long break modes</li>
 <li>Desktop notifications &amp; options</li>
 <li>Discreet Local Time</li>
+<li>Local time timer will finish</li>
 <li>Additional Theme Ideas:
 <ul>
 <li>Steampunk</li>
