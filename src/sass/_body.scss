@@ -4,14 +4,12 @@ body {
     justify-content: center;
     align-items: center;
     background-color: $classic-background;
-    height: 100vh;
 
     .content-area-container {
-        background-color: $classic-primary;
-        height: 500px;
-        width: 600px;
+        background-color: $classic-background;
+        min-height: 100vh;
+        width: 100%;
         box-shadow: $box-shadow;
-        border-radius: 4px;
         color: $light-text;
     }
 }
