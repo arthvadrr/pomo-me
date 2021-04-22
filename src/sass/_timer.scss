@@ -43,6 +43,8 @@
                 border-radius: 100%;
                 position: absolute;
                 transform: scale(1.4) translateY(-21%) rotate(270deg);
+                background-color: rgba(0, 0, 0, 0);
+                transition: $transition;
             }
 
             svg {
@@ -53,9 +55,9 @@
 
                 #progressBar {
                     stroke-dashoffset: 0;
-                    transition: stroke-dashoffset 1s linear;
                     stroke: lighten($classic-primary, 15%);
                     stroke-width: 4px;
+                    transition: stroke-dashoffset 1s linear, stroke 200ms linear;
                 }
             }
         }
@@ -97,6 +99,41 @@
                     background-color: $classic-primary;
                 }
             }
+        }
+    }
+
+    &.init {
+        #progressBar {
+            stroke: lighten($classic-primary, 15%);
+        }
+    }
+    &.break {
+        #progressBar {
+            stroke: rgb(128, 106, 252) !important;
+        }
+    }
+    &.finished {
+        #progressBar {
+            stroke: lighten($classic-primary, 15%);
+        }
+
+        .analog {
+            background-color: rgb(44, 197, 108) !important;
+        }
+    }
+    &.paused {
+        #progressBar {
+            stroke: rgb(238, 202, 135) !important;
+        }
+    }
+    &.active {
+        #progressBar {
+            stroke: rgb(109, 219, 201) !important;
+        }
+    }
+    &.break-active {
+        #progressBar {
+            stroke: rgb(162, 136, 255) !important;
         }
     }
 }

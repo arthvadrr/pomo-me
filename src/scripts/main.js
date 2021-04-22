@@ -6,25 +6,61 @@
 ## MVC refactor. MVC can be fully deployed here
 */
 
+const $pomoTimer = document.getElementsByClassName("pomo-timer")[0];
 const $timer = document.getElementById("timer");
 const $start = document.getElementById("start");
 const $reset = document.getElementById("reset");
+const $shortBreak = document.getElementById("shortBreak");
+const $longBreak = document.getElementById("longBreak");
 const $increaseTime = document.getElementById("increaseTime");
 const $decreaseTime = document.getElementById("decreaseTime");
 const $progressBar = document.getElementById("progressBar");
-let isRunning = false;
+let isActive = false;
 let dateStarted;
 let delta;
 let strokeDashArrayOffset;
 let startHidden = false;
+let pomoState = "init";
 
 //JS or linter bug resulting in type error. TODO Investigate why I'm having to explicitly force type inference.
 let countdown = () => {};
 
-let originalTime = 1500;
+let originalTime = 5;
 let startTime = originalTime;
 let remainingTime = originalTime;
 let currentDelta;
+
+const setPomoState = state => {
+    $pomoTimer.classList.remove("init");
+    $pomoTimer.classList.remove("break");
+    $pomoTimer.classList.remove("finished");
+    $pomoTimer.classList.remove("paused");
+    $pomoTimer.classList.remove("active");
+    $pomoTimer.classList.remove("break-active");
+
+    switch (state) {
+        case "init":
+            $pomoTimer.classList.add("init");
+            break;
+        case "break":
+            $pomoTimer.classList.add("break");
+            break;
+        case "finished":
+            $pomoTimer.classList.add("finished");
+            break;
+        case "paused":
+            $pomoTimer.classList.add("paused");
+            break;
+        case "active":
+            $pomoTimer.classList.add("active");
+            break;
+        case "break-active":
+            $pomoTimer.classList.add("break-active");
+            break;
+        default:
+            return;
+    }
+};
 
 const formatTime = seconds => {
     let formattedTime;
@@ -79,21 +115,25 @@ const onReset = () => {
     if (startHidden) {
         $start.removeAttribute("disabled", true);
     }
-    isRunning = false;
+    isActive = false;
     $start.innerHTML = "Start";
     $start.setAttribute("aria-pressed", false);
     startTime = originalTime;
     remainingTime = originalTime;
     printTimer(formatTime(remainingTime));
+    pomoState = "init";
+    setPomoState(pomoState);
 };
 
 const onTimerZero = () => {
     startHidden = true;
     $start.setAttribute("disabled", true);
+    pomoState = "finished";
+    setPomoState(pomoState);
 };
 
 const onStop = () => {
-    isRunning = false;
+    isActive = false;
     $start.innerHTML = "Start";
     $start.setAttribute("aria-pressed", false);
     clearInterval(countdown);
@@ -102,13 +142,17 @@ const onStop = () => {
         onTimerZero();
     } else {
         startTime = remainingTime;
+        pomoState = "paused";
+        setPomoState(pomoState);
     }
 };
 
 const onStart = () => {
-    console.log("pressed");
-    if (!isRunning) {
-        isRunning = true;
+    pomoState = pomoState === "break" ? "break-active" : "active";
+    setPomoState(pomoState);
+
+    if (!isActive) {
+        isActive = true;
         $start.innerHTML = "Pause";
         $start.setAttribute("aria-pressed", true);
         dateStarted = Date.now();
@@ -127,7 +171,7 @@ const onStart = () => {
 };
 
 const onIncreaseTime = () => {
-    isRunning = false;
+    isActive = false;
     clearInterval(countdown);
     $start.innerHTML = "Start";
     $start.setAttribute("aria-pressed", false);
@@ -144,7 +188,7 @@ const onIncreaseTime = () => {
 };
 
 const onDecreaseTime = () => {
-    isRunning = false;
+    isActive = false;
     clearInterval(countdown);
     $start.innerHTML = "Start";
     $start.setAttribute("aria-pressed", false);
@@ -160,8 +204,37 @@ const onDecreaseTime = () => {
     printTimer(formatTime(startTime));
 };
 
+const onShortBreak = () => {
+    isActive = false;
+    clearInterval(countdown);
+    $start.innerHTML = "Start";
+    $start.setAttribute("aria-pressed", false);
+    startTime = 300;
+    remainingTime = startTime;
+    originalTime = startTime;
+    printTimer(formatTime(startTime));
+    pomoState = "break";
+    setPomoState("break");
+};
+
+const onLongBreak = () => {
+    isActive = false;
+    clearInterval(countdown);
+    $start.innerHTML = "Start";
+    $start.setAttribute("aria-pressed", false);
+    startTime = 900;
+    remainingTime = startTime;
+    originalTime = startTime;
+
+    printTimer(formatTime(startTime));
+    pomoState = "break";
+    setPomoState(pomoState);
+};
+
 $start.addEventListener("click", onStart);
 $reset.addEventListener("click", onReset);
+$shortBreak.addEventListener("click", onShortBreak);
+$longBreak.addEventListener("click", onLongBreak);
 $increaseTime.addEventListener("click", onIncreaseTime);
 $decreaseTime.addEventListener("click", onDecreaseTime);
 printTimer(formatTime(remainingTime));
