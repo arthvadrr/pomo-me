@@ -136,4 +136,9 @@
             stroke: rgb(162, 136, 255) !important;
         }
     }
+    &.break-paused {
+        #progressBar {
+            stroke: rgb(100, 86, 148) !important;
+        }
+    }
 }

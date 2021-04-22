@@ -31,12 +31,15 @@ let remainingTime = originalTime;
 let currentDelta;
 
 const setPomoState = state => {
+    //TODO Add array of all states and iterate
+
     $pomoTimer.classList.remove("init");
     $pomoTimer.classList.remove("break");
     $pomoTimer.classList.remove("finished");
     $pomoTimer.classList.remove("paused");
     $pomoTimer.classList.remove("active");
     $pomoTimer.classList.remove("break-active");
+    $pomoTimer.classList.remove("break-paused");
 
     switch (state) {
         case "init":
@@ -56,6 +59,9 @@ const setPomoState = state => {
             break;
         case "break-active":
             $pomoTimer.classList.add("break-active");
+            break;
+        case "break-paused":
+            $pomoTimer.classList.add("break-paused");
             break;
         default:
             return;
@@ -133,6 +139,15 @@ const onTimerZero = () => {
 };
 
 const onStop = () => {
+    console.log(pomoState);
+    if (pomoState === "break-active") {
+        pomoState = "break-paused";
+        console.log(pomoState);
+    } else {
+        pomoState = "paused";
+    }
+    setPomoState(pomoState);
+
     isActive = false;
     $start.innerHTML = "Start";
     $start.setAttribute("aria-pressed", false);
@@ -142,16 +157,18 @@ const onStop = () => {
         onTimerZero();
     } else {
         startTime = remainingTime;
-        pomoState = "paused";
-        setPomoState(pomoState);
     }
 };
 
 const onStart = () => {
-    pomoState = pomoState === "break" ? "break-active" : "active";
-    setPomoState(pomoState);
-
     if (!isActive) {
+        if (pomoState === "break" || pomoState === "break-paused") {
+            pomoState = "break-active";
+        } else {
+            pomoState = "active";
+        }
+        setPomoState(pomoState);
+
         isActive = true;
         $start.innerHTML = "Pause";
         $start.setAttribute("aria-pressed", true);
@@ -205,6 +222,7 @@ const onDecreaseTime = () => {
 };
 
 const onShortBreak = () => {
+    onReset();
     isActive = false;
     clearInterval(countdown);
     $start.innerHTML = "Start";
@@ -214,10 +232,11 @@ const onShortBreak = () => {
     originalTime = startTime;
     printTimer(formatTime(startTime));
     pomoState = "break";
-    setPomoState("break");
+    setPomoState(pomoState);
 };
 
 const onLongBreak = () => {
+    onReset();
     isActive = false;
     clearInterval(countdown);
     $start.innerHTML = "Start";
