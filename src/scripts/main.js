@@ -6,6 +6,8 @@
 ## MVC refactor. MVC can be fully deployed here
 */
 
+const audioTicking = new Audio("../src/inc/ticking.mp3");
+const $stateView = document.getElementById("stateView");
 const $pomoTimer = document.getElementsByClassName("pomo-timer")[0];
 const $timer = document.getElementById("timer");
 const $start = document.getElementById("start");
@@ -32,6 +34,7 @@ let currentDelta;
 
 const setPomoState = state => {
     //TODO Add array of all states and iterate
+    let stateMessage = "Ready";
 
     $pomoTimer.classList.remove("init");
     $pomoTimer.classList.remove("break");
@@ -44,28 +47,60 @@ const setPomoState = state => {
     switch (state) {
         case "init":
             $pomoTimer.classList.add("init");
+            stateMessage = "Ready";
+            stopAudioTicking();
             break;
         case "break":
             $pomoTimer.classList.add("break");
+            stateMessage = "Break Time!";
+            stopAudioTicking();
             break;
         case "finished":
             $pomoTimer.classList.add("finished");
+            stateMessage = `Time's up!`;
+            stopAudioTicking();
             break;
         case "paused":
             $pomoTimer.classList.add("paused");
+            stateMessage = "Paused";
+            stopAudioTicking();
             break;
         case "active":
             $pomoTimer.classList.add("active");
+            stateMessage = "Active";
+            startAudioTicking();
             break;
         case "break-active":
             $pomoTimer.classList.add("break-active");
+            stateMessage = "Break started!";
+            startAudioTicking();
             break;
         case "break-paused":
             $pomoTimer.classList.add("break-paused");
+            stateMessage = "Paused";
+            stopAudioTicking();
             break;
         default:
+            stopAudioTicking();
+            stateMessage = "Ready";
             return;
     }
+
+    createStateElement(stateMessage);
+};
+
+const startAudioTicking = () => {};
+const stopAudioTicking = () => {};
+
+const createStateElement = state => {
+    while ($stateView.firstChild) {
+        $stateView.removeChild($stateView.firstChild);
+    }
+
+    const $newState = document.createElement("div");
+    const $stateText = document.createTextNode(state);
+    $newState.appendChild($stateText);
+    $stateView.appendChild($newState);
 };
 
 const formatTime = seconds => {

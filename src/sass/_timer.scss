@@ -3,6 +3,7 @@
         font-weight: bold;
         font-size: 4rem;
         padding-top: 1.5rem;
+        padding-bottom: 6rem;
 
         .timer-section {
             position: relative;
@@ -63,40 +64,58 @@
         }
     }
     .controls {
-        display: flex;
-        justify-content: center;
         margin: 0 auto;
-        width: 300px;
-        padding-top: 8rem;
 
-        .control-col {
+        #stateView {
+            margin: 0 auto;
+            width: 318px;
+            border: 1px dotted darken($classic-primary, 12%);
+            font-family: Righteous;
+            font-weight: 300;
+            font-size: 16px;
+            letter-spacing: 3px;
+            padding: 0.5rem 0;
+            margin-top: 2rem;
+        }
+
+        .control-row {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
 
-            button {
-                width: 12rem;
-                height: 3rem;
-                cursor: pointer;
-                padding: 0.4rem 0;
-                border: 1px dotted darken($classic-primary, 12%);
-                background-color: unset;
-                color: $gray-text;
-                font-family: Righteous;
-                font-weight: 300;
-                letter-spacing: 3px;
-                transition: $transition;
+            .control-col {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 0;
 
-                &[aria-pressed="true"] {
-                    background-color: $classic-primary;
+                button {
+                    width: 160px;
+                    height: 3rem;
+                    cursor: pointer;
+                    padding: 0.2rem 0;
+                    border: 1px dotted darken($classic-primary, 12%);
+                    background-color: unset;
+                    color: $gray-text;
+                    font-family: Righteous;
+                    font-weight: 300;
+                    letter-spacing: 3px;
+                    transition: $transition;
+
+                    &[aria-pressed="true"] {
+                        background-color: $classic-primary;
+                    }
+
+                    &:hover {
+                        color: $light-text;
+                        border: 1px dotted lighten($classic-primary, 12%);
+                    }
+
+                    &:active {
+                        background-color: $classic-primary;
+                    }
                 }
 
-                &:hover {
-                    color: $light-text;
-                    border: 1px dotted lighten($classic-primary, 12%);
-                }
-
-                &:active {
-                    background-color: $classic-primary;
+                &:last-child {
+                    margin-left: -1px;
                 }
             }
         }
@@ -106,10 +125,18 @@
         #progressBar {
             stroke: lighten($classic-primary, 15%);
         }
+
+        #stateView {
+            background-color: rgba($classic-primary, 0.2) !important;
+        }
     }
     &.break {
         #progressBar {
             stroke: rgb(128, 106, 252) !important;
+        }
+
+        #stateView {
+            background-color: rgba(128, 106, 252, 0.2) !important;
         }
     }
     &.finished {
@@ -117,28 +144,43 @@
             stroke: lighten($classic-primary, 15%);
         }
 
-        .analog {
-            background-color: rgb(44, 197, 108) !important;
+        #stateView {
+            background-color: rgba(37, 255, 121, 0.2) !important;
         }
     }
     &.paused {
         #progressBar {
             stroke: rgb(238, 202, 135) !important;
         }
+        #stateView {
+            background-color: rgba(238, 202, 135, 0.2) !important;
+        }
     }
     &.active {
         #progressBar {
             stroke: rgb(109, 219, 201) !important;
+        }
+
+        #stateView {
+            background-color: rgba(109, 219, 201, 0.2) !important;
         }
     }
     &.break-active {
         #progressBar {
             stroke: rgb(162, 136, 255) !important;
         }
+
+        #stateView {
+            background-color: rgba(162, 136, 255, 0.2) !important;
+        }
     }
     &.break-paused {
         #progressBar {
             stroke: rgb(100, 86, 148) !important;
+        }
+
+        #stateView {
+            background-color: rgba(100, 86, 148, 0.2) !important;
         }
     }
 }
