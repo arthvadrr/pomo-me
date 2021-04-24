@@ -5,33 +5,37 @@ import postcssPresetEnv from "postcss-preset-env";
 import { terser } from "rollup-plugin-terser";
 
 const addPlugins = () => {
-  return [
-    postcss({
-      extract: true,
-      minimize: true,
-      use: ["sass"],
-      plugins: [flexbugs(), postcssPresetEnv()],
-    }),
-  ];
+    return [
+        postcss({
+            extract: true,
+            minimize: true,
+            use: ["sass"],
+            plugins: [flexbugs(), postcssPresetEnv()]
+        })
+    ];
 };
 // rollup.config.js
 export default [
-  {
-    input: "./src/sass/main.scss",
-    output: {
-      name: "MainStyles",
-      file: "./build/styles.min.css",
-      format: "es",
+    {
+        input: "./src/sass/main.scss",
+        output: {
+            name: "MainStyles",
+            file: "./build/styles.min.css",
+            format: "es"
+        },
+        plugins: addPlugins()
     },
-    plugins: addPlugins(),
-  },
-  {
-    input: "./src/scripts/main.js",
-    output: {
-      file: "./build/index.min.js",
-      name: "MainScript",
-      format: "iife",
-    },
-    plugins: [babel({ babelHelpers: "bundled" }), terser],
-  },
+    {
+        input: "./src/scripts/main.js",
+        output: {
+            file: "./build/index.min.js",
+            name: "MainScript",
+            format: "iife"
+        },
+        sourceMap: "inline",
+        plugins: [
+            babel({ babelHelpers: "bundled", exclude: "node_modules/**" }),
+            terser()
+        ]
+    }
 ];

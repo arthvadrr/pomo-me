@@ -12,4 +12,8 @@ body {
         box-shadow: $box-shadow;
         color: $light-text;
     }
+
+    .hidden {
+        display: none;
+    }
 }

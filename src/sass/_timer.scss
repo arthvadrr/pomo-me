@@ -1,15 +1,15 @@
 .pomo-timer {
     .display {
+        position: relative;
         font-weight: bold;
-        font-size: 4rem;
         padding-top: 1.5rem;
-        padding-bottom: 6rem;
+        padding-bottom: 4.8rem;
+        padding-top: 4.5rem;
 
         .timer-section {
             position: relative;
             display: flex;
             justify-content: center;
-            padding-top: 4rem;
 
             button {
                 font-family: "RobotoMono";
@@ -20,7 +20,7 @@
                 border: none;
                 transition: $transition;
                 cursor: pointer;
-                max-width: 12rem;
+                max-width: 8rem;
 
                 &:hover,
                 &:focus {
@@ -31,7 +31,7 @@
 
             #timer {
                 font-family: "RobotoMono";
-                font-size: 4rem;
+                font-size: 3rem;
                 user-select: none;
                 color: lighten($classic-primary, 60%);
                 z-index: 10;
@@ -43,7 +43,7 @@
                 width: 200px;
                 border-radius: 100%;
                 position: absolute;
-                transform: scale(1.4) translateY(-21%) rotate(270deg);
+                transform: scale(1.1) translateY(-32%) rotate(270deg);
                 background-color: rgba(0, 0, 0, 0);
                 transition: $transition;
             }
@@ -63,12 +63,33 @@
             }
         }
     }
+
+    .audio-view {
+        text-align: center;
+
+        button {
+            background: red;
+            border: unset;
+            cursor: pointer;
+            margin: 0 auto;
+            padding: 0.4rem;
+            width: 278px;
+
+            .icon-volume,
+            .icon-muted {
+                height: 24px;
+                width: 24px;
+                fill: rgb(159, 157, 175);
+            }
+        }
+    }
+
     .controls {
         margin: 0 auto;
 
         #stateView {
             margin: 0 auto;
-            width: 318px;
+            width: 278px;
             border: 1px dotted darken($classic-primary, 12%);
             font-family: Righteous;
             font-weight: 300;
@@ -88,15 +109,16 @@
                 flex-grow: 0;
 
                 button {
-                    width: 160px;
+                    width: 140px;
                     height: 3rem;
                     cursor: pointer;
-                    padding: 0.2rem 0;
+                    padding: 0.3rem 0;
                     border: 1px dotted darken($classic-primary, 12%);
                     background-color: unset;
                     color: $gray-text;
                     font-family: Righteous;
                     font-weight: 300;
+                    font-size: 0.8rem;
                     letter-spacing: 3px;
                     transition: $transition;
 
@@ -127,7 +149,7 @@
         }
 
         #stateView {
-            background-color: rgba($classic-primary, 0.2) !important;
+            background-color: rgba($classic-primary, 0.3) !important;
         }
     }
     &.break {
@@ -136,7 +158,7 @@
         }
 
         #stateView {
-            background-color: rgba(128, 106, 252, 0.2) !important;
+            background-color: rgba(128, 106, 252, 0.3) !important;
         }
     }
     &.finished {
@@ -145,7 +167,7 @@
         }
 
         #stateView {
-            background-color: rgba(37, 255, 121, 0.2) !important;
+            background-color: rgba(37, 255, 121, 0.3) !important;
         }
     }
     &.paused {
@@ -153,7 +175,7 @@
             stroke: rgb(238, 202, 135) !important;
         }
         #stateView {
-            background-color: rgba(238, 202, 135, 0.2) !important;
+            background-color: rgba(238, 202, 135, 0.3) !important;
         }
     }
     &.active {
@@ -162,7 +184,7 @@
         }
 
         #stateView {
-            background-color: rgba(109, 219, 201, 0.2) !important;
+            background-color: rgba(109, 219, 201, 0.3) !important;
         }
     }
     &.break-active {
@@ -171,7 +193,7 @@
         }
 
         #stateView {
-            background-color: rgba(162, 136, 255, 0.2) !important;
+            background-color: rgba(162, 136, 255, 0.3) !important;
         }
     }
     &.break-paused {
@@ -180,7 +202,7 @@
         }
 
         #stateView {
-            background-color: rgba(100, 86, 148, 0.2) !important;
+            background-color: rgba(100, 86, 148, 0.3) !important;
         }
     }
 }
