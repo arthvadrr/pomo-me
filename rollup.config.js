@@ -32,10 +32,6 @@ export default [
             name: "MainScript",
             format: "iife"
         },
-        sourceMap: "inline",
-        plugins: [
-            babel({ babelHelpers: "bundled", exclude: "node_modules/**" }),
-            terser()
-        ]
+        plugins: [babel({ babelHelpers: "bundled" }), terser()]
     }
 ];

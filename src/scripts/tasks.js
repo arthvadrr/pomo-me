@@ -1,2 +1,0 @@
-const tasksArray = [];
-const finishedTasks = [];

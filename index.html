@@ -13,6 +13,29 @@
 
     <body>
         <div style="display: none">
+            <audio
+                id="audioTicking"
+                src="/src/inc/sounds/ticking.mp3"
+                type="audio/mpeg"
+                preload="auto"
+            ></audio>
+            <audio
+                id="audioButtonPress"
+                src="/src/inc/sounds/button-press.mp3"
+                type="audio/mpeg"
+                preload="auto"
+            ></audio>
+            <audio
+                id="audioTimesUp"
+                src="/src/inc/sounds/times-up.mp3"
+                type="audio/mpeg"
+                preload="auto"
+            ></audio>
+            <!--Not needed for ticking
+            <svg class="icon-volume" focusable="false">
+                                    <use href="#icon-volume"></use>
+                                </svg>
+            -->
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                 <symbol id="icon-volume" viewBox="0 0 32 32">
                     <path
@@ -72,52 +95,123 @@
                                     ></circle>
                                 </svg>
                             </div>
-                            <button id="decreaseTime">-</button>
+                            <button id="decreaseTime">
+                                -
+                            </button>
                             <div id="timer"></div>
-                            <button id="increaseTime">+</button>
+                            <button id="increaseTime">
+                                +
+                            </button>
                         </div>
                     </div>
                     <div class="controls">
                         <div id="stateView">
-                            <div class="state">Ready</div>
+                            <div class="state">
+                                Ready
+                            </div>
                         </div>
                         <div class="control-row">
                             <div class="control-col">
-                                <button id="shortBreak">Short Break</button>
-                                <button id="longBreak">Long Break</button>
+                                <button id="shortBreak">
+                                    Short Break
+                                </button>
+                                <button id="longBreak">
+                                    Long Break
+                                </button>
                             </div>
                             <div class="control-col">
                                 <button id="start" aria-pressed="false">
                                     Start
                                 </button>
-                                <button id="reset">Reset</button>
+                                <button id="reset">
+                                    Reset
+                                </button>
                             </div>
                         </div>
-                        <div class="control-row audio-view">
-                            <audio
-                                id="audioTicking"
-                                src="/src/inc/ticking.mp3"
-                                type="audio/mpeg"
-                                preload="auto"
-                                loop
-                            ></audio>
-                            <button id="mute-sounds" type="button">
-                                <svg class="icon-volume" focusable="false">
-                                    <use href="#icon-volume"></use>
-                                </svg>
-                                <svg
-                                    class="icon-muted hidden"
-                                    focusable="false"
+                        <div class="control-row settings">
+                            <div class="input-container">
+                                <input id="mute-ticking" type="checkbox" />
+                                <label for="mute-ticking">Mute Ticking</label>
+                            </div>
+                            <div class="input-container">
+                                <input
+                                    id="mute-button-presses"
+                                    type="checkbox"
+                                    name="Mute Button Presses"
+                                />
+                                <label for="mute-button-presses"
+                                    >Mute Button Presses</label
                                 >
-                                    <use href="#icon-muted"></use>
-                                </svg>
-                                <span id="volume-action">Mute</span>
-                            </button>
+                            </div>
+                            <div class="input-container">
+                                <input
+                                    id="mute-times-up"
+                                    name="Mute Times Up"
+                                    type="checkbox"
+                                />
+                                <label for="mute-times-up"
+                                    >Mute Time's Up</label
+                                >
+                            </div>
+                            <div class="input-container">
+                                <input
+                                    id="mute-all"
+                                    name="Mute All"
+                                    type="checkbox"
+                                />
+                                <label for="mute-all">Mute All</label>
+                            </div>
+                            <div class="input-container">
+                                <label for="ticking-volume">Ticking</label>
+                                <input
+                                    type="range"
+                                    id="ticking-volume"
+                                    name="ticking-volume"
+                                    step="0.1"
+                                    min="0.1"
+                                    max="1"
+                                />
+                            </div>
+                            <div class="input-container">
+                                <label for="times-up-volume">Time's up</label>
+                                <input
+                                    type="range"
+                                    id="times-up-volume"
+                                    name="times-up-volume"
+                                    step="0.1"
+                                    min="0.1"
+                                    max="1"
+                                />
+                            </div>
+                            <div class="input-container">
+                                <label for="button-volume">Buttons</label>
+                                <input
+                                    type="range"
+                                    id="button-volume"
+                                    name="button-volume"
+                                    step="0.1"
+                                    min="0.1"
+                                    max="1"
+                                />
+                            </div>
+                            <div class="input-container">
+                                <label for="master-volume">Master</label>
+                                <input
+                                    type="range"
+                                    id="master-volume"
+                                    name="master-volume"
+                                    step="0.1"
+                                    min="0.1"
+                                    max="1"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div class="task-list">
                         <form action="#" class="task-form">
-                            <legend>What are you working on?</legend>
+                            <legend>
+                                What are you working on?
+                            </legend>
 
                             <input
                                 type="text"

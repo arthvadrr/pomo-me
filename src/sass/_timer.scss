@@ -12,7 +12,7 @@
             justify-content: center;
 
             button {
-                font-family: "RobotoMono";
+                font-family: 'RobotoMono';
                 flex-grow: 1;
                 font-size: 2.4rem;
                 color: $classic-primary;
@@ -30,7 +30,7 @@
             }
 
             #timer {
-                font-family: "RobotoMono";
+                font-family: 'RobotoMono';
                 font-size: 3rem;
                 user-select: none;
                 color: lighten($classic-primary, 60%);
@@ -64,22 +64,25 @@
         }
     }
 
-    .audio-view {
+    .settings {
+        display: flex;
+        flex-direction: column;
+        max-width: 280px;
+        margin: 0 auto;
+        font-family: Righteous, sans-serif;
+        font-size: 12px;
+        font-weight: 300;
         text-align: center;
+        letter-spacing: 2px;
+        user-select: none;
 
-        button {
-            background: red;
-            border: unset;
-            cursor: pointer;
-            margin: 0 auto;
-            padding: 0.4rem;
-            width: 278px;
-
-            .icon-volume,
-            .icon-muted {
-                height: 24px;
-                width: 24px;
-                fill: rgb(159, 157, 175);
+        .input-container {
+            display: flex;
+            justify-content: flex-start;
+            padding: 0.4rem 0.1rem;
+            border: 1px dotted darken($classic-primary, 12%);
+            input {
+                margin-right: 0.2rem;
             }
         }
     }
@@ -122,7 +125,7 @@
                     letter-spacing: 3px;
                     transition: $transition;
 
-                    &[aria-pressed="true"] {
+                    &[aria-pressed='true'] {
                         background-color: $classic-primary;
                     }
 
