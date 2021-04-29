@@ -40,6 +40,7 @@ let startHidden = false;
 let pomoState = 'init';
 let muteTicking = false;
 let muteButtonPresses = false;
+let muteNotifications = false;
 let muteTimesUp = false;
 let muteAll = false;
 
