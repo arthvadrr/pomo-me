@@ -1,1 +1,2 @@
-import "./timer";
+import './audio';
+import './timer';
