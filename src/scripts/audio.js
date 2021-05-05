@@ -1,6 +1,6 @@
 import { $elements, state } from './global_variables';
 
-const onChangeMuteElements = e => {
+const onChangeMuteElements = (e) => {
     const $eleId = e.target.id;
 
     switch ($eleId) {
@@ -21,7 +21,7 @@ const onChangeMuteElements = e => {
     }
 };
 
-const CB_checkMuteAll = e => {
+const CB_checkMuteAll = (e) => {
     if (state.muteTicking && state.muteButtonPresses && state.muteTimesUp) {
         $elements.muteAll.checked = true;
     } else if ($elements.muteAll.checked) {
@@ -29,7 +29,7 @@ const CB_checkMuteAll = e => {
     }
 };
 
-const onMuteTicking = e => {
+const onMuteTicking = (e) => {
     if (e.target.checked) {
         state.muteTicking = true;
         $elements.audioTicking.muted = true;
@@ -41,7 +41,7 @@ const onMuteTicking = e => {
     CB_checkMuteAll(e);
 };
 
-const onMuteButtonPress = e => {
+const onMuteButtonPress = (e) => {
     if (e.target.checked) {
         state.muteButtonPresses = true;
         $elements.audioButtonPress.muted = true;
@@ -52,7 +52,7 @@ const onMuteButtonPress = e => {
 
     CB_checkMuteAll(e);
 };
-const onMuteTimesUp = e => {
+const onMuteTimesUp = (e) => {
     if (e.target.checked) {
         state.muteTimesUp = true;
         $elements.audioTimesUp.muted = true;
@@ -64,7 +64,7 @@ const onMuteTimesUp = e => {
     CB_checkMuteAll(e);
 };
 
-const onMuteAll = e => {
+const onMuteAll = (e) => {
     if (e.target.checked) {
         state.muteTicking = true;
         state.muteButtonPresses = true;
@@ -94,7 +94,7 @@ const onMuteAll = e => {
     CB_checkMuteAll(e);
 };
 
-const onTickingVolumeChange = e => {
+const onTickingVolumeChange = (e) => {
     const volumeLevel = e.target.value;
 
     if (volumeLevel) {
@@ -103,7 +103,7 @@ const onTickingVolumeChange = e => {
     }
 };
 
-const onButtonVolumeChange = e => {
+const onButtonVolumeChange = (e) => {
     const volumeLevel = e.target.value;
 
     if (volumeLevel) {
@@ -112,7 +112,7 @@ const onButtonVolumeChange = e => {
     }
 };
 
-const onTimesUpVolumeChange = e => {
+const onTimesUpVolumeChange = (e) => {
     const volumeLevel = e.target.value;
 
     if (volumeLevel) {
@@ -121,7 +121,7 @@ const onTimesUpVolumeChange = e => {
     }
 };
 
-const onMasterVolumeChange = e => {
+const onMasterVolumeChange = (e) => {
     const volumeLevel = e.target.value;
 
     if (volumeLevel) {
@@ -138,8 +138,8 @@ const onMasterVolumeChange = e => {
 
 const playAudioButtonPress = () => $elements.audioButtonPress.play();
 
-(function() {
-    $elements.audioButtonPress.volume = 0.5;
+(function () {
+    $elements.audioButtonPress.volume = 0.4;
 
     // Audio control onclicks
     $elements.muteTickingButton.addEventListener('click', onMuteTicking);

@@ -22,7 +22,7 @@ export const $elements = {
     audioTicking: document.getElementById('audioTicking'),
     audioButtonPress: document.getElementById('audioButtonPress'),
     audioTimesUp: document.getElementById('audioTimesUp'),
-    stateView: document.getElementById('stateView')
+    stateView: document.getElementById('stateView'),
 };
 
 export let state = {
@@ -41,5 +41,6 @@ export let state = {
     originalTime: 10,
     startTime: 10,
     remainingTime: 10,
-    currentDelta: 0
+    currentDelta: 0,
+    tickingStart: 0.5,
 };

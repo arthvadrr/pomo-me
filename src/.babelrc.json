@@ -1,3 +1,15 @@
 {
-    "presets": ["@babel/env"]
+    "presets": ["@babel/env"],
+    "plugins": [
+        "transform-regenerator",
+        [
+            "transform-runtime",
+            {
+                "helpers": false,
+                "polyfill": false,
+                "regenerator": true,
+                "moduleName": "rollup-regenerator-runtime"
+            }
+        ]
+    ]
 }

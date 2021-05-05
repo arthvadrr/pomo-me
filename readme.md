@@ -26,15 +26,12 @@ Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crapp
 ## Roadmap
 
 <ul>
-<li>Timer finished view</li>
-<li>Break views</li>
-<li>Steps / Progress / Current and upcoming modes</li>
-<li>Sound effects for ticking, finished</li>
-<li>Preset Classic Pomo set times</li>
-<li>Short break and long break modes</li>
-<li>Desktop notifications &amp; options</li>
-<li>Discreet Local Time</li>
-<li>Local time timer will finish</li>
+<li><s>Current State View</s></li>
+<li><s>Sound effects for ticking</s></li>
+<li><s>Short break and long break states</s></li>
+<li>Desktop notifications</li>
+<li>Discreet Local Time and ETA</li>
+<li>Local Storage / User Settings</li>
 <li>Additional Theme Ideas:
 <ul>
 <li>Steampunk</li>
@@ -44,9 +41,5 @@ Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crapp
 <li>Hyperdrive</li>
 </ul>
 </li>
-<li>Tasks</li>
-<li>Sequencer</li>
-<li>Local Storage / User Settings</li>
-<li>Integrate with Toggl API</li>
 <li>Progressive web app</li>
 </ul>

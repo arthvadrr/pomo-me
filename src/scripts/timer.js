@@ -1,18 +1,17 @@
 /*
-# Complaints/ TODO Refactor
-## Utilize state
-## Refactor to class
-## Purify functions
+# Complaints
+## Refactor to Timer class and purify methods
 ## MVC refactor. MVC can be fully deployed here
 ## Organize Variables
 */
 
 import { $elements, state } from './global_variables';
 
-const setPomoState = state => {
+const setPomoState = (state) => {
     //TODO Add array of all states and iterate
     let stateMessage = 'Ready';
 
+    //TODO This is dumb let's redo this
     $elements.pomoTimer.classList.remove('init');
     $elements.pomoTimer.classList.remove('break');
     $elements.pomoTimer.classList.remove('finished');
@@ -66,7 +65,7 @@ const setPomoState = state => {
     createStateElement(stateMessage);
 };
 
-const createStateElement = state => {
+const createStateElement = (state) => {
     while ($elements.stateView.firstChild) {
         $elements.stateView.removeChild($elements.stateView.firstChild);
     }
@@ -77,7 +76,7 @@ const createStateElement = state => {
     $elements.stateView.appendChild($newState);
 };
 
-const formatTime = seconds => {
+const formatTime = (seconds) => {
     let formattedTime;
     let minutes = Math.floor(seconds / 60);
 
@@ -89,7 +88,7 @@ const formatTime = seconds => {
         fseconds = 0;
     }
 
-    const addLeadingZero = int => (int < 10 ? `0${int}` : int);
+    const addLeadingZero = (int) => (int < 10 ? `0${int}` : int);
 
     fseconds = addLeadingZero(fseconds);
     fminutes = addLeadingZero(fminutes);
@@ -99,7 +98,7 @@ const formatTime = seconds => {
     return formattedTime;
 };
 
-const printTimer = print => {
+const printTimer = (print) => {
     $elements.timer.innerHTML = print;
     $elements.progressBar.style.strokeDashoffset = updateStrokeDashArrayOffset();
 };
@@ -114,7 +113,7 @@ const updateStrokeDashArrayOffset = () => {
     return 565.48;
 };
 
-const adjustTime = delta => {
+const adjustTime = (delta) => {
     const res = state.startTime - delta;
 
     if (res === 0) {
@@ -132,6 +131,7 @@ const onReset = () => {
     state.isActive = false;
     $elements.start.innerHTML = 'Start';
     $elements.start.setAttribute('aria-pressed', false);
+    $elements.audioTicking.currentTime = state.tickingStart;
     state.startTime = state.originalTime;
     state.remainingTime = state.originalTime;
     clearInterval(state.countDown);
@@ -145,6 +145,7 @@ const onTimerZero = () => {
     $elements.start.setAttribute('disabled', true);
     state.pomoState = 'finished';
     setPomoState(state.pomoState);
+    $elements.start.setAttribute('disabled', 'true');
     if (!state.muteNotifications) {
         $elements.audioTimesUp.play();
     }
@@ -197,7 +198,15 @@ const onStart = () => {
     }
 };
 
+const roundToFiveMinutes = (seconds) => {
+    const floor = Math.floor(seconds / 300);
+    const result = floor * 300;
+
+    return result;
+};
+
 const onIncreaseTime = () => {
+    state.startTime = roundToFiveMinutes(state.startTime);
     state.isActive = false;
     clearInterval(state.countDown);
     $elements.start.innerHTML = 'Start';
@@ -217,6 +226,7 @@ const onIncreaseTime = () => {
 };
 
 const onDecreaseTime = () => {
+    state.startTime = roundToFiveMinutes(state.startTime);
     state.isActive = false;
     clearInterval(state.countDown);
     $elements.start.innerHTML = 'Start';
@@ -247,6 +257,7 @@ const onShortBreak = () => {
     printTimer(formatTime(state.startTime));
     state.pomoState = 'break';
     setPomoState(state.pomoState);
+    onStart();
 };
 
 const onLongBreak = () => {
@@ -262,9 +273,10 @@ const onLongBreak = () => {
     printTimer(formatTime(state.startTime));
     state.pomoState = 'break';
     setPomoState(state.pomoState);
+    onStart();
 };
 
-(function() {
+(function () {
     onReset();
     printTimer(formatTime(state.remainingTime));
 
