@@ -26,9 +26,7 @@ Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crapp
 ## Roadmap
 
 <ul>
-<li><s>Current State View</s></li>
-<li><s>Sound effects for ticking</s></li>
-<li><s>Short break and long break states</s></li>
+<li>Update build process to package a nice clean static page</li>
 <li>Desktop notifications</li>
 <li>Discreet Local Time and ETA</li>
 <li>Local Storage / User Settings</li>
@@ -42,4 +40,12 @@ Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crapp
 </ul>
 </li>
 <li>Progressive web app</li>
+</ul>
+
+## Finished Items
+
+<ul>
+<li><s>Current State View</s></li>
+<li><s>Sound effects for ticking</s></li>
+<li><s>Short break and long break states</s></li>
 </ul>
