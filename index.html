@@ -17,16 +17,33 @@
             <audio
                 id="audioTicking"
                 src="/src/inc/sounds/ticking.mp3"
+                type="audio/mpeg"
+                preload="auto"
                 loop
             ></audio>
             <audio
                 id="audioButtonPress"
                 src="/src/inc/sounds/button-press.mp3"
+                type="audio/mpeg"
+                preload="auto"
             ></audio>
             <audio
                 id="audioTimesUp"
                 src="/src/inc/sounds/times-up.mp3"
+                type="audio/mpeg"
+                preload="auto"
             ></audio>
+            <audio src="sample.mp3"></audio>
+            <script>
+                var audioElem = document.document.getElementsByTagName("audio")[0];
+
+                // Add event to detect error and display error code
+                audioElem.addEventListener("error", function () {
+                    if (audioElem.error) {
+                        alert(audioElem.error.code);
+                    }
+                }, false);
+            </script>
             <!--Not needed for ticking
             <svg class="icon-volume" focusable="false">
                                     <use href="#icon-volume"></use>
