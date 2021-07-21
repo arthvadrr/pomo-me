@@ -31,9 +31,6 @@ export default [
             file: './build/index.min.js',
             name: 'MainScript',
             format: 'iife',
-            globals: {
-                '@babel/runtime/regenerator': 'regeneratorRuntime',
-            },
         },
         plugins: [babel({ babelHelpers: 'bundled' }), terser()],
     },
