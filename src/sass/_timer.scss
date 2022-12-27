@@ -165,6 +165,7 @@
                 flex-grow: 0;
 
                 button {
+                    position: relative;
                     width: 140px;
                     cursor: pointer;
                     padding: 1.5rem 0;
@@ -178,16 +179,21 @@
                     transition: $transition;
 
                     &[aria-pressed='true'] {
-                        background-color: $classic-primary;
+                        color: lighten($classic-active, 10%);
+                        text-shadow: 0 0 8px $classic-active;
                     }
 
-                    &:hover {
-                        color: $light-text;
-                        background-color: $classic-primary;
+                    &[disabled='true'] {
+                        color: #777;
                     }
 
-                    &:active {
-                        background-color: $classic-primary;
+                    &:hover:not([disabled='true']) {
+                        color: $classic-active;
+                    }
+
+                    &:active:not([disabled='true'])  {
+                        color: lighten($classic-primary, 20%);
+                        transition: none;
                     }
                 }
 
@@ -210,6 +216,7 @@
     &.break {
         #progressBar {
             stroke: rgb(128, 106, 252) !important;
+            filter: drop-shadow(0 0 4px rgb(128, 106, 252));
         }
 
         #stateView {
@@ -219,6 +226,7 @@
     &.finished {
         #progressBar {
             stroke: lighten($classic-primary, 15%);
+            filter: drop-shadow(0 0 4px rgb(128, 106, 252));
         }
 
         #stateView {
@@ -228,6 +236,7 @@
     &.paused {
         #progressBar {
             stroke: rgb(238, 202, 135) !important;
+            filter: drop-shadow(0 0 4px rgba(128, 106, 252, 0.2));
         }
         #stateView {
             background-color: rgba(238, 202, 135, 0.3) !important;
@@ -236,6 +245,7 @@
     &.active {
         #progressBar {
             stroke: rgb(109, 219, 201) !important;
+            filter: drop-shadow(0 0 2px rgba(109, 219, 201, 0.2) );
         }
 
         #stateView {
@@ -249,6 +259,21 @@
 
         #stateView {
             background-color: rgba(162, 136, 255, 0.3) !important;
+        }
+
+        button {
+            &[aria-pressed='true'] {
+                color: rgb(194, 183, 255) !important;
+                text-shadow: 0 0 8px rgb(190, 179, 254) !important;
+            }
+
+            &:hover:not([disabled='true']) {
+                color: rgb(194, 183, 255) !important;
+            }
+
+            &:active:not([disabled='true'])  {
+                color: lighten(rgb(194, 183, 255), 20%) !important;
+            }
         }
     }
     &.break-paused {

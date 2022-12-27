@@ -19,9 +19,13 @@ Babel, PostCSS, FlexBugs, PostCSS Preset Env, Terser
 
 Pomo Me is under GPL-2.0-or-later. Check out the official license docs here https://www.gnu.org/licenses/licenses.html
 
-## A note about PRs
+## Versions
 
-Feel free to submit PRs, I <i>will</i> look at them. Let me know if I have crappy code or if something doesn't look right. I'm not opinionated, I just want good code. Please include comments and reasoning with your PR. (Please no code formatting in PRs). Thanks!
+<ul>
+<li>Node: 18.12.1</li>
+<li>SASS: 1.56.2 compiled with dart2js 2.18.5</li>
+<li>NPM: 8.19.2</li>
+</ul>
 
 ## Roadmap
 
