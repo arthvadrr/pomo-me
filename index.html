@@ -9,7 +9,9 @@
         <meta name="keywords" content="Pomodoro, Timer" />
         <meta name="author" content="javaBryan" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="src/inc/img/favicon.png"/>
         <link rel="stylesheet" href="build/styles.min.css" />
+        <script defer src="build/index.min.js"></script>
     </head>
 
     <body>
@@ -33,22 +35,6 @@
                 type="audio/mpeg"
                 preload="auto"
             ></audio>
-            <audio src="sample.mp3"></audio>
-            <script>
-                var audioElem = document.document.getElementsByTagName("audio")[0];
-
-                // Add event to detect error and display error code
-                audioElem.addEventListener("error", function () {
-                    if (audioElem.error) {
-                        alert(audioElem.error.code);
-                    }
-                }, false);
-            </script>
-            <!--Not needed for ticking
-            <svg class="icon-volume" focusable="false">
-                                    <use href="#icon-volume"></use>
-                                </svg>
-            -->
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                 <symbol id="icon-volume" viewBox="0 0 32 32">
                     <path
