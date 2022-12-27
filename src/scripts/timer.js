@@ -1,11 +1,12 @@
-/*
-# Complaints
-## Refactor to Timer class and purify methods
-## MVC refactor. MVC can be fully deployed here
-## Organize Variables
-*/
-
 import { $elements, state } from './global_variables';
+
+const tickingPause = ($audio) => {
+    const playPromise = $audio.play();
+
+    if (playPromise !== undefined) {
+      playPromise.then(_ => $audio.pause()).catch(() => {});
+    }
+}
 
 const setPomoState = (state) => {
     //TODO Add array of all states and iterate
@@ -24,41 +25,40 @@ const setPomoState = (state) => {
         case 'init':
             $elements.pomoTimer.classList.add('init');
             stateMessage = 'Ready';
-            $elements.audioTicking.pause();
             break;
         case 'break':
             $elements.pomoTimer.classList.add('break');
             stateMessage = 'Break Time!';
-            $elements.audioTicking.pause();
+            tickingPause($elements.audioTicking);
             break;
         case 'finished':
             $elements.pomoTimer.classList.add('finished');
             stateMessage = `Time's up!`;
-            $elements.audioTicking.pause();
+            tickingPause($elements.audioTicking);
             break;
         case 'paused':
             $elements.pomoTimer.classList.add('paused');
             stateMessage = 'Paused';
-            $elements.audioTicking.pause();
+            tickingPause($elements.audioTicking);
             break;
         case 'active':
             $elements.pomoTimer.classList.add('active');
             stateMessage = 'Active';
-            $elements.audioTicking.play();
+            $elements.audioTicking.play().then().catch(() => {});
             break;
         case 'break-active':
             $elements.pomoTimer.classList.add('break-active');
             stateMessage = 'Break started!';
-            $elements.audioTicking.play();
+            $elements.audioTicking.play().then().catch(() => {});
             break;
         case 'break-paused':
             $elements.pomoTimer.classList.add('break-paused');
             stateMessage = 'Paused';
-            $elements.audioTicking.pause();
+            tickingPause($elements.audioTicking);
             break;
         default:
-            $elements.audioTicking.pause();
             stateMessage = 'Ready';
+            tickingPause($elements.audioTicking);
             return;
     }
 
@@ -128,6 +128,7 @@ const onReset = () => {
     if (state.startHidden) {
         $elements.start.removeAttribute('disabled', true);
     }
+    tickingPause($elements.audioTicking);
     state.isActive = false;
     $elements.start.innerHTML = 'Start';
     $elements.start.setAttribute('aria-pressed', false);
@@ -206,6 +207,7 @@ const roundToFiveMinutes = (seconds) => {
 };
 
 const onIncreaseTime = () => {
+    tickingPause($elements.audioTicking)
     state.startTime = roundToFiveMinutes(state.startTime);
     state.isActive = false;
     clearInterval(state.countDown);
@@ -226,6 +228,7 @@ const onIncreaseTime = () => {
 };
 
 const onDecreaseTime = () => {
+    tickingPause($elements.audioTicking)
     state.startTime = roundToFiveMinutes(state.startTime);
     state.isActive = false;
     clearInterval(state.countDown);

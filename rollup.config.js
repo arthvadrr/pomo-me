@@ -25,7 +25,7 @@ export default [
         plugins: addPlugins(),
     },
     {
-        input: './src/scripts/main.js',
+        input: './src/scripts/index.js',
         output: {
             file: './build/index.min.js',
             name: 'MainScript',

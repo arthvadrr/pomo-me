@@ -27,6 +27,7 @@ export const $elements = {
 
 export let state = {
     countdown: () => {},
+    $ticking: $elements.audioTicking,
     isActive: false,
     dateStarted: 0,
     delta: 0,
