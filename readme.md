@@ -1,6 +1,6 @@
 # Pomo Me
 
-A pomo web app. Just a fun rather useless project to play around with.
+A pomo web app. Just a fun Pomodoro project to play around with and test things.
 
 ## Cloning/Installation
 
