@@ -2,6 +2,8 @@
 
 A pomo web app. Just a fun Pomodoro project to play around with and test things.
 
+[Take me to the Pomo-Me page](https://arthvadrr.github.io/pomo-me/)
+
 ## Cloning/Installation
 
 Rollup is compiling SCSS and JS from /src to /build.
